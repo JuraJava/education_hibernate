@@ -25,6 +25,7 @@ public class Lesson_6 {
             car1.setName("Mercedes");
             car1.setPrice(200_000);
             car1.setColor("Black");
+            car1.setYear(2020);
             System.out.println(car1);
 
             session.getTransaction().commit();
