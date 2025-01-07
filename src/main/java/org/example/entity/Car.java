@@ -1,15 +1,14 @@
 package org.example.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cars")
 public class Car {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    Это для того чтобы id автоматически увеличивался на 1 от предыдущего
     @Column(name = "id")
     private int id;
 
