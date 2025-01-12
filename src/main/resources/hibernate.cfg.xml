@@ -19,6 +19,10 @@
         <!--      Это чтобы sql- сообщение в консоли в логах отображалось в удобном виде-->
         <mapping class="org.example.entity.Car"/>
 
+        <mapping class="one_to_one.entity.Car"/>
+        <mapping class="one_to_one.entity.Engine"/>
+
+
     </session-factory>
 </hibernate-configuration>
 
