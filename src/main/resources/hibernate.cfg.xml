@@ -17,7 +17,8 @@
         <property name="current_session_context_class">thread</property>
         <property name="format_sql">true</property>
         <!--      Это чтобы sql- сообщение в консоли в логах отображалось в удобном виде-->
-        <mapping class="org.example.entity.Car"/>
+<!--        <mapping class="org.example.entity.Car"/>-->
+<!--        Это мы закомментировали т.к. название класса не уникально-->
 
         <mapping class="one_to_one.entity.Car"/>
         <mapping class="one_to_one.entity.Engine"/>
