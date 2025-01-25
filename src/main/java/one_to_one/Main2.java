@@ -18,13 +18,24 @@ public class Main2 {
             session = factory.getCurrentSession();
             session.beginTransaction();
 
-            Car car1 = new Car("AUDI", 1995, "Yellow", 600, 200);
-            Engine engine1 = new Engine(333, 3333);
+//            Car car1 = new Car("AUDI", 1995, "Yellow", 600, 200);
+//            Engine engine1 = new Engine(333, 3333);
+//
+//            car1.setCarEngine(engine1);
+//            engine1.setCar(car1);
+//
+//            session.save(engine1);
 
-            car1.setCarEngine(engine1);
-            engine1.setCar(car1);
+//  Lesson 17
 
-            session.save(engine1);
+            Engine engine = session.get(Engine.class, 3);
+
+            engine.getCar().setCarEngine(null);
+            // Это мы делаем чтобы разорвать связь между автомобилем (Car) и двигателем (Engine)
+            // чтобы потом удалить, а если бы в классе Engine cascade был бы = CascadeType.ALL
+            // то этого делать бы не пришлось
+
+            session.delete(engine);
 
             session.getTransaction().commit();
         } finally {
