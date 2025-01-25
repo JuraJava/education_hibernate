@@ -15,8 +15,10 @@ public class Main {
                 .addAnnotatedClass(Car.class)
                 .addAnnotatedClass(Engine.class)
                 .buildSessionFactory();
+
+        Session session = null;
         try {
-            Session session = factory.getCurrentSession();
+            session = factory.getCurrentSession();
             session.beginTransaction();
 
 //      Lesson 13
@@ -42,11 +44,19 @@ public class Main {
 //            System.out.println(cars);
 
 //            Удаление данных из таблицы.
-            Car car2 = session.get(Car.class, 2);
-            session.delete(car2);
+//            Car car2 = session.get(Car.class, 2);
+//            session.delete(car2);
+//      Lesson 15
+
+            Car car4 = session.get(Car.class, 4);
+            session.delete(car4);
+            System.out.println(car4);
 
             session.getTransaction().commit();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
         } finally {
+            session.close();
             factory.close();
         }
     }

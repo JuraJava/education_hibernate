@@ -18,6 +18,19 @@ public class Engine {
    @Column(name = "volume")
    private int volume;
 
+   @OneToOne(mappedBy = "carEngine", cascade = CascadeType.ALL)
+   private Car car;
+   // Это поле мы добавили позднее чтобы показать двунаправленную связь
+
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
     public Engine() {
     }
 
