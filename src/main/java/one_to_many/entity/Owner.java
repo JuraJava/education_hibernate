@@ -31,7 +31,7 @@ public class Owner {
     public Owner() {
     }
 
-    public Owner(String name, int age, int car_id) {
+    public Owner(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -60,7 +60,7 @@ public class Owner {
         this.age = age;
     }
 
-    public void addCar(Car car) {
+    public void addCarToOwner(Car car) {
         if (cars == null) {
             cars = new ArrayList<>();
         }
