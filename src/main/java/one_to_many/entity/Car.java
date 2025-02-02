@@ -14,6 +14,18 @@ public class Car {
     @Column(name = "speed")
     private double speed;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_owner")
+    public Owner owner;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     public Car() {
     }
 

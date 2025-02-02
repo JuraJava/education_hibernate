@@ -2,6 +2,9 @@ package one_to_many.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "owner")
 public class Owner {
@@ -13,8 +16,17 @@ public class Owner {
     private String name;
     @Column(name = "age")
     private int age;
-//    @Column(name = "car_id")
-//    private int car_id;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private List<Car> cars;
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public Owner() {
     }
@@ -22,7 +34,6 @@ public class Owner {
     public Owner(String name, int age, int car_id) {
         this.name = name;
         this.age = age;
-//        this.car_id = car_id;
     }
 
     public int getId() {
@@ -49,13 +60,13 @@ public class Owner {
         this.age = age;
     }
 
-//    public int getCar_id() {
-//        return car_id;
-//    }
-//
-//    public void setCar_id(int car_id) {
-//        this.car_id = car_id;
-//    }
+    public void addCar(Car car) {
+        if (cars == null) {
+            cars = new ArrayList<>();
+        }
+        cars.add(car);
+        car.setOwner(this);
+    }
 
     @Override
     public String toString() {
@@ -63,7 +74,6 @@ public class Owner {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-//                ", car_id=" + car_id +
                 '}';
     }
 }
