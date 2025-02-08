@@ -28,7 +28,7 @@ public class Lesson_23 {
 //            System.out.println(car);
 //            System.out.println(car.getOwner());
 
-            List<Car> cars = session.createQuery("from Car where speed > 112 and id = 4").getResultList();
+//            List<Car> cars = session.createQuery("from Car where speed > 112 and id = 4").getResultList();
 //            System.out.println(cars);
 
 //            for (Car car : cars) {
@@ -36,9 +36,17 @@ public class Lesson_23 {
 //            }
 
 // Эти верхние три строки кода можно написать и по другому:
-            for (var c : cars) {
-                System.out.println(c);
-            }
+//            for (var c : cars) {
+//                System.out.println(c);
+//            }
+
+//  Lesson 24   ************************************************
+
+//            Car car1 = session.get(Car.class, 1);
+//            session.delete(car1);
+
+            Owner owner = session.get(Owner.class, 1);
+            session.delete(owner);
 
             session.getTransaction().commit();
         } finally {

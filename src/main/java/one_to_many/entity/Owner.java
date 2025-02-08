@@ -17,7 +17,14 @@ public class Owner {
     @Column(name = "age")
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE
+    }, mappedBy = "owner")
     private List<Car> cars;
 
     public List<Car> getCars() {
