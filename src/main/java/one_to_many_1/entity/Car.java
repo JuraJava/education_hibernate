@@ -1,4 +1,4 @@
-package one_to_many.entity;
+package one_to_many_1.entity;
 
 import jakarta.persistence.*;
 
@@ -14,30 +14,12 @@ public class Car {
     @Column(name = "speed")
     private double speed;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH
-    })
-    @JoinColumn(name = "id_owner")
-    private Owner owner;
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public Car() {
-    }
-
     public Car(String model, double speed) {
         this.model = model;
         this.speed = speed;
+    }
+    public Car() {
+
     }
 
     public int getId() {
