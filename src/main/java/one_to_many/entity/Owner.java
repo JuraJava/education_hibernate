@@ -18,13 +18,18 @@ public class Owner {
     private int age;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    @OneToMany(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE
-    }, mappedBy = "owner")
+//    @OneToMany(cascade = {
+//            CascadeType.DETACH,
+//            CascadeType.MERGE,
+//            CascadeType.PERSIST,
+//            CascadeType.REFRESH,
+//            CascadeType.REMOVE
+//    }, mappedBy = "owner")
+@OneToMany(
+        cascade = CascadeType.ALL,
+        mappedBy = "owner",
+//        fetch = FetchType.EAGER)
+    fetch = FetchType.LAZY)
     private List<Car> cars;
 
     public List<Car> getCars() {

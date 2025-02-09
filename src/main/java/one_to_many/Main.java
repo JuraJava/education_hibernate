@@ -15,18 +15,25 @@ public class Main {
                 .buildSessionFactory();
         Session session = null;
 
-        Owner owner1 = new Owner("Ivan", 25);
-        Car car1 = new Car("AUDI", 111);
-        Car car2 = new Car("BMW", 222);
-
-        owner1.addCarToOwner(car1);
-        owner1.addCarToOwner(car2);
+//        Owner owner1 = new Owner("Ivan", 25);
+//        Car car1 = new Car("AUDI", 111);
+//        Car car2 = new Car("BMW", 222);
+//        owner1.addCarToOwner(car1);
+//        owner1.addCarToOwner(car2);
 
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
 
-            session.save(owner1);
+//            session.save(owner1);
+//  Lesson 26  ---------------------------------------------------
+
+            Owner owner = session.get(Owner.class, 5);
+            System.out.println("Owner");
+            System.out.println(owner);
+            System.out.println("---------------------------------------");
+            System.out.println("Cars");
+            System.out.println(owner.getCars());
 
             session.getTransaction().commit();
         } finally {
