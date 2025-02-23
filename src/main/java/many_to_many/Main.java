@@ -82,7 +82,7 @@ public class Main {
             session.save(passenger4);
             session.save(passenger5);
 
-            // Такой вариант добавления не оптимальный
+// Такой вариант добавления не оптимальный
 
             taxi1.addPassengerToTaxi(passenger1);
             taxi1.addPassengerToTaxi(passenger2);
