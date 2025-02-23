@@ -19,7 +19,16 @@ public class Passenger {
     @Column(name = "age")
     private int age;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+//    @ManyToMany(cascade = CascadeType.ALL)
+// Если мы установим cascade = CascadeType.ALL, то при удалении данных с какой-нибудь
+// таблицы, будут удаляться все данные из связанных таблиц,
+// для ManyToMany  CascadeType.ALL лучше не устанавливать
+@ManyToMany(cascade = {
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.PERSIST,
+        CascadeType.REFRESH })
+
     @JoinTable(name = "pass_taxi",
             joinColumns = @JoinColumn(name = "pass_id"),
             inverseJoinColumns = @JoinColumn(name = "taxi_id"))
@@ -29,8 +38,7 @@ public class Passenger {
     public Passenger() {
     }
 
-    public Passenger(int id, String name, int age) {
-        this.id = id;
+    public Passenger(String name, int age) {
         this.name = name;
         this.age = age;
     }
